@@ -216,24 +216,24 @@ static void paintParams(ScreenParam_t* p, uint8_t n)
 
     for(int i=0; i<n; i++)
     {
-      oled.setCursor(0, i*10);
+        oled.setCursor(0, i*10);
 
-      strncpy_P(buffer, p[i].caption, sizeof(buffer));      
-      oled.print(buffer);
+        strncpy_P(buffer, p[i].caption, sizeof(buffer));      
+        oled.print(buffer);
 
-      if(p[i].isEditing)
-      {
-          oled.print(F("<"));
-          oled.print(*(p[i].var));
-          oled.print(F(">"));
-      }
-      else
-      {
-          oled.print(*(p[i].var));
-      }
+        if(p[i].isEditing)
+        {
+            oled.print(F("<"));
+            oled.print(*(p[i].var));
+            oled.print(F(">"));
+        }
+        else
+        {
+            oled.print(*(p[i].var));
+        }
 
-      strncpy_P(buffer, p[i].units, sizeof(buffer));      
-      oled.print(buffer); 
+        strncpy_P(buffer, p[i].units, sizeof(buffer));      
+        oled.print(buffer); 
     }
     
     oled.display();  
@@ -317,7 +317,7 @@ static bool onUpSettingsScreen(uint8_t tmp)
 
      if(editingFlag)
      {
-          result = true;
+         result = true;
               
          if(tmp == (KEYS_EVENT_SHORTUP | KEYS_EVENT_UP))
          {

@@ -27,27 +27,27 @@
 
 #define KEYS_NUMKEYS            2
 
-#define KEYS_KEY_SET				    0
-#define KEYS_KEY_TRIG			      1
+#define KEYS_KEY_SET            0
+#define KEYS_KEY_TRIG           1
 
 #define KEYS_PIN_SET            2
 #define KEYS_PIN_TRIG           3
 
-#define KEYS_EVENT_DOWN		      0x01
-#define KEYS_EVENT_UP				    0x02
-#define KEYS_EVENT_SHORTUP			0x04
-#define KEYS_EVENT_HOLD				  0x08
-#define KEYS_EVENT_REPEATED			0x10
+#define KEYS_EVENT_DOWN         0x01
+#define KEYS_EVENT_UP           0x02
+#define KEYS_EVENT_SHORTUP      0x04
+#define KEYS_EVENT_HOLD         0x08
+#define KEYS_EVENT_REPEATED     0x10
 
 void Keys_Init();
 void Keys_Handler();
 void Keys_Purge();
 uint8_t Keys_GetKeyStatus(int8_t key, uint8_t mask);
 
-#define Keys_IsDown(key)			  Keys_GetKeyStatus((key), KEYS_EVENT_DOWN)
-#define Keys_IsUp(key)			    Keys_GetKeyStatus((key), KEYS_EVENT_UP)
-#define Keys_IsShortUp(key)		  Keys_GetKeyStatus((key), KEYS_EVENT_SHORTUP)
-#define Keys_IsHeld(key)			  Keys_GetKeyStatus((key), KEYS_EVENT_HOLD)
-#define Keys_IsRepeated(key)	  Keys_GetKeyStatus((key), KEYS_EVENT_REPEATED)
+#define Keys_IsDown(key)        Keys_GetKeyStatus((key), KEYS_EVENT_DOWN)
+#define Keys_IsUp(key)          Keys_GetKeyStatus((key), KEYS_EVENT_UP)
+#define Keys_IsShortUp(key)     Keys_GetKeyStatus((key), KEYS_EVENT_SHORTUP)
+#define Keys_IsHeld(key)        Keys_GetKeyStatus((key), KEYS_EVENT_HOLD)
+#define Keys_IsRepeated(key)    Keys_GetKeyStatus((key), KEYS_EVENT_REPEATED)
 
 #endif

@@ -33,8 +33,8 @@
 typedef struct KeyState_s
 {
     uint8_t pin;
-	  uint8_t cnt;
-	  uint8_t flags;
+    uint8_t cnt;
+    uint8_t flags;
 } KeyState_t;
 
 /*------------------------------------------------------------------------------------------
@@ -49,8 +49,8 @@ static const uint8_t shortTime=20;
  *------------------------------------------------------------------------------------------*/
 static KeyState_t keys[KEYS_NUMKEYS] =
 {
-	  {KEYS_PIN_SET, 0, 0},
-	  {KEYS_PIN_TRIG, 0, 0},
+    {KEYS_PIN_SET, 0, 0},
+    {KEYS_PIN_TRIG, 0, 0},
 };
 
 /*------------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ static void hwInit()
         KeyState_t *k = &keys[i];
         pinMode(k->pin, INPUT); 
         digitalWrite(k->pin, OUTPUT);
-    }    
+    }
 }
 
 /*
@@ -80,55 +80,54 @@ static void keyProcess(uint8_t key)
 {
     if(key < KEYS_NUMKEYS)
     {
+        uint8_t tmp;
+        KeyState_t *k = &keys[key];
 
-	      uint8_t tmp;
-	      KeyState_t *k = &keys[key];
+        if(digitalRead(k->pin) == HIGH)
+        {
+            tmp = k->cnt;
+            if(tmp>1)
+            {
+                if(tmp<shortTime)
+                {
+                    k->flags |= KEYS_EVENT_SHORTUP | KEYS_EVENT_UP;
+                }
+                else
+                {
+                    k->flags |= KEYS_EVENT_UP;
+                }
+            }
 
-	      if(digitalRead(k->pin) == HIGH)
-	      {
-		        tmp = k->cnt;
-		        if(tmp>1)
-		        {
-			          if(tmp<shortTime)
+            k->cnt=0;
+        }
+        else
+        {
+            tmp = k->cnt;
+            if(tmp>0)
+            {
+                if(tmp==1)
                 {
-				            k->flags |= KEYS_EVENT_SHORTUP | KEYS_EVENT_UP;
+                    k->flags |= KEYS_EVENT_DOWN;
                 }
-			          else
+                else
                 {
-				            k->flags |= KEYS_EVENT_UP;
-                }
-		        }
-           
-		        k->cnt=0;
-	      }
-	      else
-	      {
-		        tmp = k->cnt;
-		        if(tmp>0)
-		        {
-			          if(tmp==1)
-                {
-				            k->flags |= KEYS_EVENT_DOWN;
-                }
-			          else
-			          {
-				            if(tmp==holdTime)
+                    if(tmp==holdTime)
                     {
-					              k->flags |= KEYS_EVENT_HOLD;
+                        k->flags |= KEYS_EVENT_HOLD;
                     }
-				            else
-				            {
-					              if(tmp>=(holdTime+repeatTime))
-					              {
-						                k->flags |= KEYS_EVENT_REPEATED;
-						                k->cnt = holdTime;
-					              }
-				            }
-			          }
-		        }
-		        
-		        k->cnt++;	
-	      }
+                    else
+                    {
+                        if(tmp>=(holdTime+repeatTime))
+                        {
+                            k->flags |= KEYS_EVENT_REPEATED;
+                            k->cnt = holdTime;
+                        }
+                    }
+                }
+            }
+
+            k->cnt++;
+        }
     }
 }
 
@@ -154,7 +153,7 @@ void Keys_Handler()
     uint8_t i;
     for(i=0; i<KEYS_NUMKEYS; i++)
     {
-		    keyProcess(i);
+        keyProcess(i);
     }
 }
 
@@ -165,9 +164,9 @@ void Keys_Handler()
 void Keys_Purge()
 {
     uint8_t i;
-	  for(i=0; i<KEYS_NUMKEYS; i++)
+    for(i=0; i<KEYS_NUMKEYS; i++)
     {
-		    keys[i].flags = 0;
+        keys[i].flags = 0;
     }
 }
 
