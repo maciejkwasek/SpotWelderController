@@ -14,3 +14,12 @@ SpotWelderController after pushing TRIG key sends two pulses on TRIGGER line. Th
 In order to limit the shock current, transformer activation should be done at maxium voltage of sine. To do that, additional signal SYNC is used for zero crossing detecion. After detecting zero crossing SpotWelderController waits 5ms for maximum volatage of the sine and then sends a pulse on the TRIGGER line.
 
 Parameters of the pulses and the gap are shown on the oled display and can be easily changed with only one SET button. In addition, SpotWelderController measures continuously high-power transformer temperature and shows on the display.
+
+## Hardware
+
+**High voltage is dangerous. Before operate make sure that you have appropriate skills and equipment.**
+
+
+There is no dedicated hardware for SpotWelderController. You have to build entire device yourself. Type of thyristors depends on your high-power tranformer. In most cases, high-power transformer will be retrived from old microwave oven. Such transformer has power about 700-800W. You have to remove secondary windings and rewind 3-5 turns with thick cable (e.g. 25mm2). The thicker cable the better result. Sample driving circuit with zero crossing detector can look like below.
+
+![Sample driving circuit](docs/SpotWelderTrigger.svg?raw=true "SpotWelderTrigger")
