@@ -23,3 +23,9 @@ Parameters of the pulses and the gap are shown on the oled display and can be ea
 There is no dedicated hardware for SpotWelderController. You have to build entire device yourself. Type of thyristors depends on your high-power tranformer. In most cases, high-power transformer will be retrived from old microwave oven. Such transformer has power about 700-800W. You have to remove secondary windings and rewind 3-5 turns with thick cable (e.g. 25mm2). The thicker cable the better result. Sample driving circuit with zero crossing detector can look like below.
 
 ![Sample driving circuit](docs/SpotWelderTrigger.svg?raw=true "SpotWelderTrigger")
+
+## Prototype
+First prototype is not very pretty but it works :). On the left you can see arduino board, oled display and SET key. There are also a couple of passive elements. The TRIG key is a footswitch connected with the cable to the board. On the right, there is a circuit built according to the schematic above.
+ 
+ 
+![Prototype](docs/Prototype.jpg?raw=true "Prototype")
