@@ -532,6 +532,7 @@ void loop()
 
     if(repaintFlag)
     {
+        repaintFlag = false;
         screenPainters[currentScreen]();
     }
 }
