@@ -47,6 +47,17 @@ static bool waitForZero()
     return tout;
 }
 
+/*
+ *
+ *
+ */
+static void doSpot(uint32_t pulse)
+{
+    digitalWrite(WELDER_TRIGGER_PIN, HIGH);
+    delay(pulse);
+    digitalWrite(WELDER_TRIGGER_PIN, LOW);
+}
+
 /*------------------------------------------------------------------------------------------
  * PUBLIC FUNCTIONS
  *------------------------------------------------------------------------------------------*/
@@ -78,11 +89,8 @@ bool Welder_DoSpot(uint32_t pulse1, uint32_t pulse2, uint32_t gap)
 
         // Wait for max
         delay(5);
+        doSpot(pulse1);
 
-        digitalWrite(WELDER_TRIGGER_PIN, HIGH);
-        delay(pulse1);
-        digitalWrite(WELDER_TRIGGER_PIN, LOW);
-    
         delay(gap);
     
         if(pulse2)
@@ -91,10 +99,7 @@ bool Welder_DoSpot(uint32_t pulse1, uint32_t pulse2, uint32_t gap)
             {
                 // Wait for max
                 delay(5);
-              
-                digitalWrite(WELDER_TRIGGER_PIN, HIGH);
-                delay(pulse2);
-                digitalWrite(WELDER_TRIGGER_PIN, LOW);
+                doSpot(pulse2);
             }
             else
             {

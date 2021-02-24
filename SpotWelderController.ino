@@ -206,7 +206,7 @@ static void paintWelcomeScreen()
  * 
  * 
  */
-static void paintParams(ScreenParam_t* p, uint8_t n)
+static void paintParams(const ScreenParam_t* p, uint8_t n)
 {
     char buffer[16];
 

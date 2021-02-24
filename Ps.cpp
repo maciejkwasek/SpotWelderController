@@ -64,7 +64,7 @@ bool Ps_Load(uint16_t addr, uint8_t* buf, uint16_t len)
  * 
  * 
  */
-void Ps_Save(uint16_t addr, uint8_t* buf, uint16_t len)
+void Ps_Save(uint16_t addr, const uint8_t* buf, uint16_t len)
 {
     uint32_t cs = 0;
 
