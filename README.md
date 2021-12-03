@@ -17,10 +17,11 @@ Parameters of the pulses and the gap are shown on the oled display and can be ea
 
 ## Hardware
 
-**High voltage is dangerous. Before operate make sure that you have appropriate skills and equipment.**
+**High voltage is dangerous. Before operating make sure that you have appropriate skills and equipment.**
 
+**Project of dedicated hardware is available in repository [SpotWelderTrigger_Hw](https://github.com/maciejkwasek/SpotWelderTrigger_Hw).**
 
-There is no dedicated hardware for SpotWelderController. You have to build entire device yourself. Type of thyristors depends on your high-power tranformer. In most cases, high-power transformer will be retrived from old microwave oven. Such transformer has power about 700-800W. You have to remove secondary windings and rewind 3-5 turns with thick cable (e.g. 25mm2). The thicker cable the better result. Sample driving circuit with zero crossing detector can look like below.
+You can alse build entire device yourself. Type of thyristors depends on your high-power tranformer. In most cases, high-power transformer will be retrived from old microwave oven. Such transformer has power about 700-800W. You have to remove secondary windings and rewind 3-5 turns with thick cable (e.g. 25mm2). The thicker cable the better result. Sample driving circuit with zero crossing detector can look like below.
 
 ![Sample driving circuit](docs/SpotWelderTrigger.svg?raw=true "SpotWelderTrigger")
 
